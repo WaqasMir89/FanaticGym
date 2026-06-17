@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fanatic Gym – Karachi's Elite Fitness Centre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #080808;
+    --dark: #111111;
+    --card: #181818;
+    --raised: #222222;
+    --border: rgba(255,255,255,0.08);
+    --yellow: #FF6B1A;
+    --yellow-dim: #D45510;
+    --red: #FF2D20;
+    --white: #FFFFFF;
+    --muted: #888888;
+    --light: #AAAAAA;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--white);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  }
+  .logo-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+  .logo-text span { color: var(--yellow); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--light);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--yellow); }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 26px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover {
+    background: #FF8C45;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--yellow);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 26px;
+    text-decoration: none;
+    border: 2px solid var(--yellow);
+    cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-outline:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 100px 5% 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg, rgba(8,8,8,0.98) 42%, rgba(8,8,8,0.6) 100%),
+      url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80') center/cover no-repeat;
+  }
+
+  .hero-slash {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 52%;
+    background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80') center/cover no-repeat;
+    clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.35;
+  }
+
+  .hero-slash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--black) 0%, transparent 40%);
+  }
+
+  .hero-accent-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--yellow);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 2px;
+    background: var(--yellow);
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(64px, 9vw, 110px);
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .hero-title .line-yellow { color: var(--yellow); }
+  .hero-title .line-italic { font-style: italic; }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--light);
+    max-width: 440px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .hero-tag svg { color: var(--yellow); flex-shrink: 0; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--yellow);
+    padding: 0 5%;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
+  .stat-item {
+    flex: 1;
+    padding: 28px 20px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 90px 5%; }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 14px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--yellow);
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title span { color: var(--yellow); }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 52px;
+  }
+
+  /* ── PROGRAMS ── */
+  #programs { background: var(--dark); }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .program-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    cursor: pointer;
+  }
+
+  .program-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg-img, #111) center/cover no-repeat;
+    transition: transform 0.5s ease;
+    z-index: 0;
+  }
+  .program-card:hover::before { transform: scale(1.06); }
+
+  .program-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+  }
+
+  .program-content { position: relative; z-index: 2; }
+
+  .program-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+
+  .program-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .program-desc { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  /* ── WHY US ── */
+  #why { background: var(--black); }
+
+  .why-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .why-image {
+    position: relative;
+  }
+  .why-image img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+  }
+  .why-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--yellow);
+    color: var(--white);
+    padding: 24px 28px;
+  }
+  .why-badge .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1;
+  }
+  .why-badge .lbl {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .why-features { display: flex; flex-direction: column; gap: 28px; }
+
+  .why-feature {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .why-feature:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .why-icon {
+    width: 48px; height: 48px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+
+  .why-feature-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .why-feature-desc { font-size: 14px; color: var(--muted); }
+
+  /* ── MEMBERSHIP ── */
+  #membership { background: var(--dark); }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .plan-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color 0.25s;
+  }
+  .plan-card:hover { border-color: rgba(255,212,0,0.3); }
+
+  .plan-card.featured {
+    background: var(--yellow);
+    border-color: var(--yellow);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -13px; left: 32px;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+  }
+
+  .plan-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .plan-card.featured .plan-name { color: rgba(255,255,255,0.75); }
+
+  .plan-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 1;
+    color: var(--white);
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .plan-card.featured .plan-price { color: var(--white); }
+  .plan-price .currency { font-size: 22px; margin-top: 10px; font-weight: 600; }
+  .plan-price .period { font-size: 15px; font-weight: 400; color: var(--muted); align-self: flex-end; padding-bottom: 8px; }
+  .plan-card.featured .plan-price .period { color: rgba(255,255,255,0.6); }
+
+  .plan-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+  .plan-card.featured .plan-divider { background: rgba(255,255,255,0.25); }
+
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+
+  .plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--light);
+  }
+  .plan-card.featured .plan-features li { color: rgba(255,255,255,0.9); }
+
+  .plan-features li::before {
+    content: '✓';
+    display: inline-flex;
+    width: 18px; height: 18px;
+    background: rgba(255,107,26,0.15);
+    color: var(--yellow);
+    font-size: 11px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+  .plan-card.featured .plan-features li::before {
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+  }
+
+  .plan-features li.disabled {
+    color: rgba(255,255,255,0.25);
+    text-decoration: line-through;
+  }
+  .plan-features li.disabled::before {
+    content: '—';
+    background: transparent;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .btn-plan {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid var(--yellow);
+    background: transparent;
+    color: var(--yellow);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-plan:hover { background: var(--yellow); color: var(--white); }
+
+  .plan-card.featured .btn-plan {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+  .plan-card.featured .btn-plan:hover {
+    background: var(--dark);
+  }
+
+  /* ── TRAINERS ── */
+  #trainers { background: var(--black); }
+
+  .trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+  }
+
+  .trainer-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trainer-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(40%);
+    transition: filter 0.4s, transform 0.5s;
+  }
+  .trainer-card:hover .trainer-img { filter: grayscale(0%); transform: scale(1.04); }
+
+  .trainer-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 70%, transparent);
+    transform: translateY(10px);
+    transition: transform 0.3s;
+  }
+  .trainer-card:hover .trainer-info { transform: translateY(0); }
+
+  .trainer-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .trainer-role {
+    font-size: 13px;
+    color: var(--yellow);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── TIMETABLE ── */
+  #schedule { background: var(--dark); }
+
+  .schedule-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    padding: 12px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .tab-btn.active {
+    color: var(--yellow);
+    border-bottom-color: var(--yellow);
+  }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .class-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--yellow);
+    padding: 16px 18px;
+    transition: background 0.2s;
+  }
+  .class-card:hover { background: var(--raised); }
+
+  .class-time { font-size: 12px; color: var(--yellow); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .class-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; text-transform: uppercase; margin-bottom: 4px; }
+  .class-trainer { font-size: 12px; color: var(--muted); }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--black); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  .testi-card {
+    background: var(--card);
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: border-color 0.25s;
+  }
+  .testi-card:hover { border-color: rgba(255,212,0,0.2); }
+
+  .testi-quote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px;
+    color: var(--yellow);
+    line-height: 0.6;
+    margin-bottom: 16px;
+    opacity: 0.4;
+  }
+
+  .testi-text {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--light);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+
+  .testi-avatar {
+    width: 44px; height: 44px;
+    background: var(--yellow);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testi-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; text-transform: uppercase; }
+  .testi-since { font-size: 12px; color: var(--muted); }
+
+  .stars { color: var(--yellow); font-size: 13px; letter-spacing: 2px; margin-top: 2px; }
+
+  /* ── CTA STRIP ── */
+  #cta {
+    background: var(--yellow);
+    padding: 70px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #cta::before {
+    content: 'FANATIC';
+    position: absolute;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 220px;
+    color: rgba(0,0,0,0.05);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  #cta h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 62px);
+    text-transform: uppercase;
+    color: var(--black);
+    line-height: 0.95;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  #cta p { font-size: 16px; color: rgba(0,0,0,0.6); margin-bottom: 36px; position: relative; }
+  #cta .btn-dark {
+    display: inline-block;
+    background: var(--black);
+    color: var(--yellow);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 44px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: background 0.2s;
+    position: relative;
+  }
+  #cta .btn-dark:hover { background: #1a1a1a; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--dark); }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+
+  .contact-item { display: flex; gap: 18px; align-items: flex-start; }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,212,0,0.1);
+    border: 1px solid rgba(255,212,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: var(--yellow);
+  }
+
+  .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+  .contact-value { font-size: 15px; font-weight: 500; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--yellow); }
+  .form-group select option { background: var(--card); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #040404;
+    padding: 60px 5% 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 52px;
+  }
+
+  .footer-brand .logo-text { font-size: 22px; }
+  .footer-tagline { font-size: 13px; color: var(--muted); margin-top: 12px; line-height: 1.7; max-width: 240px; }
+
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 18px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { text-decoration: none; font-size: 13px; color: var(--muted); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--yellow); }
+
+  .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+  .social-btn {
+    width: 36px; height: 36px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--muted);
+  }
+  .social-btn:hover { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p { font-size: 12px; color: var(--muted); }
+  .footer-bottom a { color: var(--yellow); text-decoration: none; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--black);
+    padding: 90px 5% 40px;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    transition: color 0.2s;
+  }
+  .mobile-nav a:hover { color: var(--yellow); }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .why-layout,
+    .contact-layout { grid-template-columns: 1fr; }
+    .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    nav .btn-primary { display: none; }
+    .hamburger { display: flex; }
+    .stats-strip { flex-wrap: wrap; }
+    .stat-item { flex: 1 1 50%; }
+    .form-row { grid-template-columns: 1fr; }
+    .why-badge { bottom: 10px; right: 10px; }
+    .hero-slash { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .programs-grid { grid-template-columns: 1fr; }
+    .trainers-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">FG</div>
+    <div class="logo-text">FANATIC <span>GYM</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#membership" class="btn-primary">Join Now</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-nav" id="mobileMenu">
+  <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#why" onclick="toggleMenu()">About</a>
+  <a href="#membership" onclick="toggleMenu()">Membership</a>
+  <a href="#trainers" onclick="toggleMenu()">Trainers</a>
+  <a href="#schedule" onclick="toggleMenu()">Schedule</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-accent-bar"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Karachi's Premier Fitness Centre</div>
+    <h1 class="hero-title">
+      TRAIN<br>
+      <span class="line-yellow">LIKE A</span><br>
+      <span class="line-italic">FANATIC</span>
+    </h1>
+    <p class="hero-sub">
+      Push beyond your limits. State-of-the-art equipment, elite trainers, and a culture built for those who refuse to settle for average.
+    </p>
+    <div class="hero-cta">
+      <a href="#membership" class="btn-primary">Start Today — Free Trial</a>
+      <a href="#programs" class="btn-outline">Explore Programs</a>
+    </div>
+    <div style="display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;">
+      <div class="hero-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        No sign-up fee this month
+      </div>
+      <div class="hero-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        7-day free trial
+      </div>
+      <div class="hero-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Cancel anytime
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">2,500<span style="font-size:28px">+</span></div>
+    <div class="stat-label">Active Members</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">18</div>
+    <div class="stat-label">Elite Trainers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">40<span style="font-size:28px">+</span></div>
+    <div class="stat-label">Weekly Classes</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">6</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-eyebrow">What We Offer</div>
+  <h2 class="section-title">TRAIN ON <span>YOUR TERMS</span></h2>
+  <p class="section-desc">From strength and conditioning to martial arts and functional fitness — every program is designed to push you further.</p>
+
+  <div class="programs-grid">
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">Strength</div>
+        <div class="program-name">Powerlifting & Weights</div>
+        <div class="program-desc">Full free-weight floor with Olympic platforms and premium barbells.</div>
+      </div>
+    </div>
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1549476464-37392f717541?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">Combat</div>
+        <div class="program-name">Boxing & MMA</div>
+        <div class="program-desc">Professional boxing ring, heavy bags, and certified combat coaches.</div>
+      </div>
+    </div>
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">Flexibility</div>
+        <div class="program-name">Yoga & Mobility</div>
+        <div class="program-desc">Dedicated studio for yoga, stretching and recovery work.</div>
+      </div>
+    </div>
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">Cardio</div>
+        <div class="program-name">HIIT & Conditioning</div>
+        <div class="program-desc">High-intensity interval sessions that torch fat in 45 minutes flat.</div>
+      </div>
+    </div>
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">1-on-1</div>
+        <div class="program-name">Personal Training</div>
+        <div class="program-desc">Custom programs built around your goals, schedule and body.</div>
+      </div>
+    </div>
+    <div class="program-card" style="--bg-img: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80')">
+      <div class="program-content">
+        <div class="program-tag">Functional</div>
+        <div class="program-name">CrossFit-Style WODs</div>
+        <div class="program-desc">Community-driven workouts of the day — all levels welcome.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-layout">
+    <div class="why-image reveal">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Fanatic Gym interior" loading="lazy">
+      <div class="why-badge">
+        <div class="num">#1</div>
+        <div class="lbl">Rated gym<br>in Karachi</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow">Why Fanatic</div>
+      <h2 class="section-title">WHERE ORDINARY<br><span>ENDS</span></h2>
+      <p class="section-desc">We built this gym for people who take fitness seriously. Not a hotel gym. Not a circuit park. A real training ground.</p>
+      <div class="why-features">
+        <div class="why-feature reveal">
+          <div class="why-icon">⚡</div>
+          <div>
+            <div class="why-feature-title">Premium Equipment</div>
+            <div class="why-feature-desc">Hammer Strength, Life Fitness, and Rogue rigs — maintained weekly and upgraded annually.</div>
+          </div>
+        </div>
+        <div class="why-feature reveal">
+          <div class="why-icon">🏆</div>
+          <div>
+            <div class="why-feature-title">Certified Elite Trainers</div>
+            <div class="why-feature-desc">Our coaches hold international certifications and compete at national level. Results, not promises.</div>
+          </div>
+        </div>
+        <div class="why-feature reveal">
+          <div class="why-icon">🕐</div>
+          <div>
+            <div class="why-feature-title">Open 6am – 12am Daily</div>
+            <div class="why-feature-desc">Early bird? Night owl? We stay open 18 hours a day so you have zero excuses.</div>
+          </div>
+        </div>
+        <div class="why-feature reveal">
+          <div class="why-icon">🧬</div>
+          <div>
+            <div class="why-feature-title">Diet & Nutrition Coaching</div>
+            <div class="why-feature-desc">In-house nutritionist with personalised meal planning and body composition tracking.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+  <div style="text-align:center;margin-bottom:56px;">
+    <div class="section-eyebrow" style="justify-content:center;">Pricing</div>
+    <h2 class="section-title">PICK YOUR <span>PLAN</span></h2>
+    <p class="section-desc" style="max-width:540px;margin:0 auto;">No hidden charges. No lock-in contracts on starter plans. Cancel anytime.</p>
+  </div>
+  <div class="plans-grid">
+    <!-- Basic -->
+    <div class="plan-card reveal">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">
+        <span class="currency">₨</span>
+        <span>4,500</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Full gym floor access</li>
+        <li>Locker room & showers</li>
+        <li>Group class — 2 per week</li>
+        <li class="disabled">Personal trainer sessions</li>
+        <li class="disabled">Nutrition consultation</li>
+        <li class="disabled">Guest passes</li>
+      </ul>
+      <button class="btn-plan">Get Started</button>
+    </div>
+    <!-- Pro (featured) -->
+    <div class="plan-card featured reveal">
+      <div class="plan-badge">Most Popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">
+        <span class="currency" style="color:var(--black)">₨</span>
+        <span>8,000</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Full gym floor access</li>
+        <li>Locker room & showers</li>
+        <li>Unlimited group classes</li>
+        <li>4 PT sessions per month</li>
+        <li>1 nutrition check-in</li>
+        <li class="disabled">Guest passes</li>
+      </ul>
+      <button class="btn-plan">Start Free Trial</button>
+    </div>
+    <!-- Elite -->
+    <div class="plan-card reveal">
+      <div class="plan-name">Elite</div>
+      <div class="plan-price">
+        <span class="currency">₨</span>
+        <span>14,000</span>
+        <span class="period">/mo</span>
+      </div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Full gym floor access</li>
+        <li>Locker room & showers</li>
+        <li>Unlimited group classes</li>
+        <li>8 PT sessions per month</li>
+        <li>Monthly nutrition plan</li>
+        <li>2 guest passes/month</li>
+      </ul>
+      <button class="btn-plan">Go Elite</button>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:28px;font-size:13px;color:var(--muted);">
+    All plans include a <strong style="color:var(--yellow)">7-day free trial</strong>. Corporate & student discounts available. <a href="#contact" style="color:var(--yellow);text-decoration:none;">Contact us →</a>
+  </p>
+</section>
+
+<!-- TRAINERS -->
+<section id="trainers">
+  <div class="section-eyebrow">Our Team</div>
+  <h2 class="section-title">MEET THE <span>COACHES</span></h2>
+  <p class="section-desc">Our trainers don't just coach — they compete, certify, and live this lifestyle.</p>
+  <div class="trainers-grid">
+    <div class="trainer-card reveal">
+      <img class="trainer-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=480&fit=crop&crop=face" alt="Trainer">
+      <div class="trainer-info">
+        <div class="trainer-name">Ahmed Raza</div>
+        <div class="trainer-role">Head Coach — Strength & Conditioning</div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <img class="trainer-img" src="https://images.unsplash.com/photo-1571019613576-2b22c76fd955?w=400&h=480&fit=crop&crop=face" alt="Trainer">
+      <div class="trainer-info">
+        <div class="trainer-name">Bilal Khan</div>
+        <div class="trainer-role">Boxing & Combat Specialist</div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <img class="trainer-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=480&fit=crop&crop=face" alt="Trainer">
+      <div class="trainer-info">
+        <div class="trainer-name">Sana Mirza</div>
+        <div class="trainer-role">HIIT & Functional Fitness</div>
+      </div>
+    </div>
+    <div class="trainer-card reveal">
+      <img class="trainer-img" src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=400&h=480&fit=crop&crop=face" alt="Trainer">
+      <div class="trainer-info">
+        <div class="trainer-name">Usman Tariq</div>
+        <div class="trainer-role">Nutrition & Body Composition</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="section-eyebrow">Weekly Timetable</div>
+  <h2 class="section-title">CLASS <span>SCHEDULE</span></h2>
+  <div class="schedule-tabs">
+    <button class="tab-btn active" onclick="setDay(this, 'mon')">Monday</button>
+    <button class="tab-btn" onclick="setDay(this, 'tue')">Tuesday</button>
+    <button class="tab-btn" onclick="setDay(this, 'wed')">Wednesday</button>
+    <button class="tab-btn" onclick="setDay(this, 'thu')">Thursday</button>
+    <button class="tab-btn" onclick="setDay(this, 'fri')">Friday</button>
+    <button class="tab-btn" onclick="setDay(this, 'sat')">Saturday</button>
+    <button class="tab-btn" onclick="setDay(this, 'sun')">Sunday</button>
+  </div>
+  <div class="schedule-grid" id="schedule-grid"></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="text-align:center;margin-bottom:52px;">
+    <div class="section-eyebrow" style="justify-content:center;">Member Stories</div>
+    <h2 class="section-title">REAL RESULTS, <span>REAL PEOPLE</span></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Joined Fanatic Gym three months ago after years of mediocre gyms. The trainers here are on a completely different level. Lost 12kg and feel stronger than I ever have.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">ZA</div>
+        <div>
+          <div class="testi-name">Zaid Ahmed</div>
+          <div class="testi-since">Member since 2024</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">The HIIT classes alone are worth every rupee. Sana pushes you beyond what you think you're capable of. Best gym atmosphere in Karachi, period.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">FH</div>
+        <div>
+          <div class="testi-name">Fatima Hussain</div>
+          <div class="testi-since">Member since 2023</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">The equipment is properly maintained, the space is clean, and coaches actually remember your name and your goals. Switched from another top gym and won't go back.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SK</div>
+        <div>
+          <div class="testi-name">Salman Khan</div>
+          <div class="testi-since">Member since 2022</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section id="cta">
+  <h2>YOUR NEXT REP<br>STARTS NOW</h2>
+  <p>Get your first week free — no card required.</p>
+  <a href="#contact" class="btn-dark">Claim Free Trial</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Get In Touch</div>
+  <h2 class="section-title">FIND <span>FANATIC GYM</span></h2>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <div class="contact-item reveal">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">A-91, Z/5, Gulshan-e-Maymar<br>Karachi, Pakistan</div>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone / WhatsApp</div>
+          <div class="contact-value">+92 315 2805669</div>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">📸</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value">@fanaticgym.pk</div>
+        </div>
+      </div>
+      <div class="contact-item reveal">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value">Mon – Sat: 6:00 AM – 12:00 AM<br>Sunday: 8:00 AM – 10:00 PM</div>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:20px;margin-top:8px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d491.4933624957146!2d67.1250928006013!3d25.01658527240225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb3470019802ac9%3A0x9638a0cb11d9953f!2sFanatic%20Gym!5e0!3m2!1sen!2s!4v1781723862982!5m2!1sen!2s" 
+          width="100%" height="200" style="border:0;display:block;filter:grayscale(100%) invert(92%) contrast(89%);" allowfullscreen loading="lazy" title="Map">
+        </iframe>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="+92 3XX XXXXXXX">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Interested In</label>
+        <select>
+          <option value="">Select a program</option>
+          <option>Strength & Powerlifting</option>
+          <option>Boxing & MMA</option>
+          <option>HIIT & Conditioning</option>
+          <option>Personal Training</option>
+          <option>Yoga & Mobility</option>
+          <option>CrossFit WODs</option>
+          <option>General Membership</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (optional)</label>
+        <textarea placeholder="Tell us your goals or ask a question..."></textarea>
+      </div>
+      <button class="btn-primary" style="padding:14px;font-size:15px;" onclick="submitForm(this)">Send Message</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">We'll respond on WhatsApp within 2 hours during opening hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:0;">
+        <div class="logo-mark">FG</div>
+        <div class="logo-text">FANATIC <span>GYM</span></div>
+      </div>
+      <p class="footer-tagline">Karachi's most serious training facility. Built for athletes, open to everyone willing to work.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="https://www.instagram.com/fanaticgym.pk" target="_blank" title="Instagram">📸</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        <a class="social-btn" href="#" title="Facebook">📘</a>
+        <a class="social-btn" href="#" title="TikTok">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#trainers">Our Trainers</a></li>
+        <li><a href="#schedule">Class Schedule</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Programs</h4>
+      <ul>
+        <li><a href="#programs">Powerlifting</a></li>
+        <li><a href="#programs">Boxing & MMA</a></li>
+        <li><a href="#programs">HIIT Classes</a></li>
+        <li><a href="#programs">Yoga & Mobility</a></li>
+        <li><a href="#programs">Personal Training</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><a href="#">Mon–Sat: 6am–12am</a></li>
+        <li><a href="#">Sunday: 8am–10pm</a></li>
+        <li><a href="#contact">+92 321 000 0000</a></li>
+        <li><a href="https://www.instagram.com/fanaticgym.pk">@fanaticgym.pk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Fanatic Gym. All rights reserved. Karachi, Pakistan.</p>
+    <p>Designed by <a href="https://www.waqasmir.com">@Waqas Mir</a></p>
+  </div>
+</footer>
+
+<script>
+  const schedule = {
+    mon: [
+      {time:'6:00 AM',name:'Morning HIIT',trainer:'Sana Mirza'},
+      {time:'8:00 AM',name:'Powerlifting Open',trainer:'Open floor'},
+      {time:'10:00 AM',name:'Yoga & Mobility',trainer:'Ayesha Noor'},
+      {time:'6:00 PM',name:'Boxing Fundamentals',trainer:'Bilal Khan'},
+      {time:'7:30 PM',name:'CrossFit WOD',trainer:'Ahmed Raza'},
+      {time:'9:00 PM',name:'Open Training',trainer:'Floor time'},
+    ],
+    tue: [
+      {time:'6:00 AM',name:'Cardio Blast',trainer:'Sana Mirza'},
+      {time:'9:00 AM',name:'Strength Circuit',trainer:'Ahmed Raza'},
+      {time:'12:00 PM',name:'Lunchtime HIIT',trainer:'Usman Tariq'},
+      {time:'6:30 PM',name:'MMA Conditioning',trainer:'Bilal Khan'},
+      {time:'8:00 PM',name:'Body Composition',trainer:'Usman Tariq'},
+    ],
+    wed: [
+      {time:'6:00 AM',name:'Morning HIIT',trainer:'Sana Mirza'},
+      {time:'8:00 AM',name:'Olympic Lifting',trainer:'Ahmed Raza'},
+      {time:'11:00 AM',name:'Yoga Flow',trainer:'Ayesha Noor'},
+      {time:'5:30 PM',name:'Boxing Sparring',trainer:'Bilal Khan'},
+      {time:'7:00 PM',name:'CrossFit WOD',trainer:'Ahmed Raza'},
+    ],
+    thu: [
+      {time:'7:00 AM',name:'Functional Fitness',trainer:'Usman Tariq'},
+      {time:'10:00 AM',name:'Plyometrics',trainer:'Sana Mirza'},
+      {time:'6:00 PM',name:'Kickboxing',trainer:'Bilal Khan'},
+      {time:'7:30 PM',name:'Strength WOD',trainer:'Ahmed Raza'},
+      {time:'9:00 PM',name:'Open Training',trainer:'Floor time'},
+    ],
+    fri: [
+      {time:'6:00 AM',name:'Cardio & Core',trainer:'Sana Mirza'},
+      {time:'12:00 PM',name:'Friday Pump',trainer:'Ahmed Raza'},
+      {time:'5:00 PM',name:'Boxing Technique',trainer:'Bilal Khan'},
+      {time:'7:00 PM',name:'HIIT Finisher',trainer:'Sana Mirza'},
+    ],
+    sat: [
+      {time:'7:00 AM',name:'Weekend Warriors HIIT',trainer:'Sana Mirza'},
+      {time:'9:00 AM',name:'Powerlifting Max',trainer:'Ahmed Raza'},
+      {time:'11:00 AM',name:'Yoga & Recovery',trainer:'Ayesha Noor'},
+      {time:'4:00 PM',name:'Combat Conditioning',trainer:'Bilal Khan'},
+      {time:'6:00 PM',name:'CrossFit Team WOD',trainer:'Ahmed Raza'},
+    ],
+    sun: [
+      {time:'8:00 AM',name:'Active Recovery',trainer:'Ayesha Noor'},
+      {time:'10:00 AM',name:'Open Lifting',trainer:'Floor time'},
+      {time:'12:00 PM',name:'Yoga Restore',trainer:'Ayesha Noor'},
+      {time:'4:00 PM',name:'Box Cardio',trainer:'Bilal Khan'},
+    ],
+  };
+
+  function setDay(btn, day) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const grid = document.getElementById('schedule-grid');
+    grid.innerHTML = schedule[day].map(c => `
+      <div class="class-card">
+        <div class="class-time">${c.time}</div>
+        <div class="class-name">${c.name}</div>
+        <div class="class-trainer">with ${c.trainer}</div>
+      </div>
+    `).join('');
+  }
+  setDay(document.querySelector('.tab-btn'), 'mon');
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function submitForm(btn) {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#1DB954';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background =
+      window.scrollY > 60 ? 'rgba(8,8,8,0.98)' : 'rgba(8,8,8,0.92)';
+  });
+</script>
+</body>
+</html>
